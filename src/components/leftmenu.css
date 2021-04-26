@@ -1,0 +1,11 @@
+.logo{
+	height: 64px;
+	/* background-image: url(../assets/logo.png); */
+	background-repeat: no-repeat;
+	background-size: 200px;
+	background-position: center;
+	    background-color: #002140;
+}
+/* .menu{
+	padding:16px 0;
+} */

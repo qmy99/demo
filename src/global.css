@@ -1,0 +1,340 @@
+
+html, body, :global(#root) {
+  height: 100%;
+}
+@font-face {
+  font-family: 'anticon';
+  font-display: fallback;
+  src: url('./font/font_148784_v4ggb6wrjmkotj4i.eot');
+  /* IE9*/
+  src: url('./font/font_148784_v4ggb6wrjmkotj4i.woff') format('woff'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/ url('./font/font_148784_v4ggb6wrjmkotj4i.ttf') format('truetype'), /* iOS 4.1- */ url('./font/font_148784_v4ggb6wrjmkotj4i.svg#iconfont') format('svg');
+}
+.contentPanel{
+	background-color: #FFFFFF;
+	margin-top:0;
+	padding:20px;
+}
+.PageTitle{
+  font-size: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+.infoPanel{
+	background-color: #FFFFFF;
+	margin-top:10px;
+	padding:40px;
+}
+.ant-radio-group,.ant-form-item-control-wrapper{
+  height: auto;
+}
+.operBtn{
+	float: right;
+}
+.operBtn>button{
+	margin:0 10px;
+}
+/*.searchPanel1 .ant-form-item*/
+.searchPanel .ant-form-item-label {
+	text-align: left;
+}
+.searchPanel1 .ant-form-item-label{
+  text-align: left;
+}
+.operation{
+	color: #1890ff;
+}
+.ant-btn{
+  padding: 0 14px;
+}
+.keep{
+  text-align: center;
+  height: 52px;
+}
+.keep Button{
+  margin: 5px 10px;
+}
+.antBtn .ant-btn{
+  padding: 0 5px;
+  height: 28px;
+  margin: 1px 2px;
+}
+.bjyellow{
+  background:#FEFEEF!important;
+}
+.bjgreen{
+  background:#EEFFF5!important;
+}
+.bjgray{
+  background:#eee!important;
+}
+.ant-table-thead > tr > th, .ant-table-tbody > tr > td{
+  /*text-align: center;*/
+  padding: 8px  8px;
+  font-size: 14px;
+  word-break: break-all
+}
+.treeTable  .ant-table-tbody > tr > td{
+  text-align: left
+}
+.ant-tabs.ant-tabs-card > .ant-tabs-bar .ant-tabs-tab{
+  margin-right: 10px;
+  line-height: 32px;
+}
+.ant-tabs.ant-tabs-card > .ant-tabs-bar .ant-tabs-nav-container{
+  height: 32px;
+}
+
+.ant-layout-content{
+  min-width: 480px;
+  padding: 10px;
+}
+.copy Button{
+  margin:0 10px;
+}
+.clear{
+   background: #e6f7ff;
+   border: solid 1px #bae7ff;
+   margin: 20px 0;
+   line-height: 40px;
+  border-radius: 4px;
+}
+.clear p{
+  margin: 0;
+}
+.clear span{
+  color: #028fe8;
+  margin: 0 10px;
+  cursor: pointer;
+}
+.ant-modal-footer{
+  text-align: center;
+}
+.ant-modal-footer>Button{
+  margin: 0 20px;
+}
+.add{
+  text-align: center;
+  padding: 10px 0;
+  border: dashed 1px #e2e2e2;
+  cursor: pointer;
+}
+.steps-content{
+  margin-top: 40px;
+}
+.steps-action{
+  text-align: center;
+}
+.set{
+  width: 80px;
+  margin:  0  5px;
+}
+.item{
+  padding:10px 20px;
+  -webkit-box-shadow: -1px 2px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: -1px 2px 2px rgba(0, 0, 0, 0.2);
+  margin: 20px 10px;
+  cursor: pointer;
+}
+.item h1{
+  font-size: 26px;
+}
+.ant-tabs-bar{
+  margin: 0;
+}
+.four .ant-input{
+    width: 60px;
+}
+.selected .ant-select-selection{
+  border-top-right-radius:0;
+  border-bottom-right-radius:0;
+}
+
+.number{
+  width: 73%;
+  border-left: none;
+  border-top-left-radius:0;
+  border-bottom-left-radius:0;
+}
+/*.ant-form-item{*/
+  /*margin-bottom: 0;*/
+  /*padding-bottom:12px;*/
+/*}*/
+.ant-upload-select-picture-card i {
+  font-size: 32px;
+  color: #999;
+}
+/*.ant-form-vertical .ant-form-item{*/
+  /*padding-bottom: 17px;*/
+/*}*/
+.audios{
+  border-right: 1px solid  #e2e2e2;
+}
+.email{
+  word-break: break-word;
+}
+.ant-menu-vertical > .ant-menu-item, .ant-menu-vertical-left > .ant-menu-item, .ant-menu-vertical-right > .ant-menu-item, .ant-menu-inline > .ant-menu-item, .ant-menu-vertical > .ant-menu-submenu > .ant-menu-submenu-title, .ant-menu-vertical-left > .ant-menu-submenu > .ant-menu-submenu-title, .ant-menu-vertical-right > .ant-menu-submenu > .ant-menu-submenu-title, .ant-menu-inline > .ant-menu-submenu > .ant-menu-submenu-title{
+  height: 35px;
+  line-height: 35px;
+}
+.ant-menu-vertical .ant-menu-item:not(:last-child), .ant-menu-vertical-left .ant-menu-item:not(:last-child), .ant-menu-vertical-right .ant-menu-item:not(:last-child), .ant-menu-inline .ant-menu-item:not(:last-child){
+  margin-bottom: 0;
+}
+.ant-menu-sub.ant-menu-inline > .ant-menu-item, .ant-menu-sub.ant-menu-inline > .ant-menu-submenu > .ant-menu-submenu-title{
+  height: 35px;
+  line-height: 35px;
+}
+.tablerow{
+	font-size: 12px;
+}
+.downloadBtn{
+	cursor: pointer;
+	color: #1890ff;
+}
+.under .ant-upload-list{
+  width: 330px;
+}
+.reload .ant-upload-list{
+	display:none;
+}
+.reload .tpUpload .ant-upload-list{
+	display:block;
+}
+.list{
+  float: left;
+  margin-top: -25px;
+  margin-left: 48px;
+  color: rgb(24, 144, 255);
+  cursor: pointer;
+}
+.colSpan{
+	border-bottom: 1px solid #eee;
+	padding:0 8px;
+	line-height: 25px;
+}
+
+.colRow{
+	padding:0 !important;
+	margin:0 !important;
+}
+.colRow>.colSpan:last-child{
+	border-bottom: 0
+}
+
+.leftTree .ant-menu-item:hover{
+	background-color: #1890ff;
+}
+.sortEdit i{
+  margin-left: 15px;
+  font-size:17px;
+}
+.sortEdit i:hover{
+  cursor: pointer;
+}
+.ant-spin-nested-loading > div > .ant-spin{
+	/*max-height: none;*/
+}
+.searchPanel1 .ant-row.ant-form-item{
+	margin-bottom: 10px;
+}
+.hideMH .ant-form-item-label label{
+	display: none;
+}
+
+.icons i{
+  padding-left:15px;
+  font-size: 15px;
+}
+.icons{
+  float: right;
+  display: none;
+}
+.menuTree li:hover .icons{
+   display: block;
+}
+.rc-autoresponsive-container>div{
+	cursor: pointer;
+}
+.rc-autoresponsive-container>div:hover .picListInfo{
+	display: block;
+}
+.picListInfo{
+	display: none;
+	margin-top: -73px;
+	background: #000;
+	color: #fff;
+	opacity: 0.6;
+	padding:5px 0 5px 20px;
+}
+.addColl .anticon-plus-circle{
+  font-size: 23px;
+  margin-left: 20px;
+  margin-top: 5px;
+}
+.warnRow{
+  background: #FFDEAD;
+}
+ .ant-table-tbody > .warnRow:hover:not(.ant-table-expanded-row) > td{
+   background: #FFDEAD;
+ }
+
+.ant-transfer-list{
+  width: 220px;
+  height: 300px;
+}
+.adsense .ant-upload-list.ant-upload-list-picture-card{
+  width:50%;
+}
+.adsense .ant-upload-list-picture-card .ant-upload-list-item{
+  width:100%;
+}
+.adsense .ant-upload.ant-upload-select-picture-card{
+  width:50%;
+}
+.adsenseFile .ant-upload-list-item-info{
+ cursor: pointer;
+}
+.rightNum{
+  text-align: right;
+}
+
+.changePwd .ant-form-item-label{
+  text-align: right;
+}
+.colCursor{
+  cursor: pointer;
+}
+.ant-tooltip-inner{
+ background: #FFFFFF;
+  color: #000000;
+}
+.batchDetail  .ant-form-item{
+   min-height: 40px;
+}
+
+.ant-radio-group, .ant-form-item-control-wrapper{
+  min-height: 32px;
+}
+.audioSj  .ant-checkbox-wrapper{
+  padding: 5px 0;
+}
+/*.counterExport .ant-form-item-label{*/
+  /*text-align: right;*/
+/*}*/
+.op{
+  font-size: 12px;
+  color:#ccc;
+  }
+.delPadding{
+  padding:0px!important;
+}
+.delPadding div div:nth-child(1){
+  border: 0px!important
+}
+.delPadding div div{
+  padding:8px 8px!important;
+  border-top:1px solid #e8e8e8
+  /*  */
+}
+.bf-image >div img{
+  width: 1000px;
+}
