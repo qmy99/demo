@@ -13,13 +13,13 @@ import {
   message,
   DatePicker,
 } from 'antd';
-const { RangePicker } = DatePicker; 
-const Option=Select.Option; 
+const { RangePicker } = DatePicker;
+const Option = Select.Option;
 
-function Position(state: any) {  
+function Position(state: any) {
   // const [form] = Form.useForm();
   const [Addform] = Form.useForm();
-  const [SendMessage] = Form.useForm(); 
+  const [SendMessage] = Form.useForm();
   const { TextArea } = Input;
   const AddParams = state.AddParams;
   const [form] = Form.useForm();
@@ -40,40 +40,69 @@ function Position(state: any) {
       dataIndex: 'education',
       key: 'education',
       render: (text: any) => {
-        return text==100?'初中及以下':text==101?'中专':text==102?'高中':text==103?'大专':text==104?'本科':text==105?'研究生':text==106?'博士':''
-      }
+        return text == 100
+          ? '初中及以下'
+          : text == 101
+          ? '中专'
+          : text == 102
+          ? '高中'
+          : text == 103
+          ? '大专'
+          : text == 104
+          ? '本科'
+          : text == 105
+          ? '研究生'
+          : text == 106
+          ? '博士'
+          : text == 107
+          ? '其他'
+          : '';
+      },
     },
     {
       title: '专业',
       dataIndex: 'specialty',
       key: 'specialty',
       render: (text: any) => {
-        return state.MajorList.map((item:any)=> { if(item.key==text){return item.name} })
-      }
+        return state.MajorList.map((item: any) => {
+          if (item.key == text) {
+            return item.name;
+          }
+        });
+      },
     },
     {
       title: '拟招聘人数',
       dataIndex: 'recruitNum',
-      key: 'recruitNum'
-    }, 
+      key: 'recruitNum',
+    },
     {
       title: '操作',
       width: '220px',
       render: (row: any) => {
         return (
           <div>
-            <a style={{ marginLeft: 10 }} onClick={() => {
-              state.dispatch({ type: 'position/cancel'})
-              state.dispatch({ type: 'position/save', payload: { AddParams:row, Visible: true,Update: true }})
-            }}>
+            <a
+              style={{ marginLeft: 10 }}
+              onClick={() => {
+                state.dispatch({ type: 'position/cancel' });
+                state.dispatch({
+                  type: 'position/save',
+                  payload: { AddParams: row, Visible: true, Update: true },
+                });
+              }}
+            >
               编辑
             </a>
             <Popconfirm
               title="确定删除?"
-              onConfirm={()=>{
-                state.dispatch({ type: 'position/Delete', payload: { id:row.id}})
+              onConfirm={() => {
+                state.dispatch({
+                  type: 'position/Delete',
+                  payload: { id: row.id },
+                });
               }}
-              onCancel={()=>{}}
+              onCancel={() => {}}
               okText="确定"
               cancelText="取消"
             >
@@ -81,66 +110,77 @@ function Position(state: any) {
             </Popconfirm>
           </div>
         );
-      }
-    }
+      },
+    },
   ];
-  if(state.Update){
-    form.setFieldsValue(params)
-    Addform.setFieldsValue(state.AddParams)
-    SendMessage.setFieldsValue({time:[]})
+  if (state.Update) {
+    form.setFieldsValue(params);
+    Addform.setFieldsValue(state.AddParams);
+    SendMessage.setFieldsValue({ time: [] });
     state.dispatch({ type: 'position/save', payload: { Update: false } });
   }
   function onChanges(current: any, pageSize: any) {
-    params.currentPage=current;
+    params.currentPage = current;
     state.dispatch({ type: 'position/save', payload: { params: params } });
     state.dispatch({ type: 'position/getList' });
   }
   function changeSize(current: number, pageSize: number) {
-    params.currentPage=1;
-    params.perPageRows=pageSize;
+    params.currentPage = 1;
+    params.perPageRows = pageSize;
     state.dispatch({ type: 'position/save', payload: { params: params } });
     state.dispatch({ type: 'position/getList' });
   }
-  function getList(){
-    form.validateFields().then(values=>{
-      const List: any = {};
-      for (let item in values) {
-        if (values[item]) {
-          List[item] = values[item];
+  function getList() {
+    form
+      .validateFields()
+      .then((values) => {
+        const List: any = {};
+        for (let item in values) {
+          if (values[item]) {
+            List[item] = values[item];
+          }
         }
-      }
-      let newParams = Object.assign(params, List);
-      newParams.currentPage=1;
-      state.dispatch({type:"position/save",payload:{params:newParams}});
-      state.dispatch({type:"position/getList"})
-    }).catch(errorInfo => {
-      console.log(errorInfo)
-    })
+        let newParams = Object.assign(params, List);
+        newParams.currentPage = 1;
+        state.dispatch({
+          type: 'position/save',
+          payload: { params: newParams },
+        });
+        state.dispatch({ type: 'position/getList' });
+      })
+      .catch((errorInfo) => {
+        console.log(errorInfo);
+      });
   }
- 
-  function cancel(){
-    // state.dispatch({ type: 'position/cancel'}) 
-    state.dispatch({ type: 'position/save', payload: { Visible: false,Update: true }})
-  }
-  function confirm(){
-    Addform
-    .validateFields()
-    .then((values) => {
-      const List: any = {};
-      for (let item in values) {
-        if (values[item]) {
-          List[item] = values[item];
-        }
-      }
-      state.dispatch({ type: 'position/UpDate',  payload: { params: List,id:AddParams.id?AddParams.id:''}}); 
-    })
-    .catch((errorInfo) => {
-      console.log(errorInfo);
+
+  function cancel() {
+    // state.dispatch({ type: 'position/cancel'})
+    state.dispatch({
+      type: 'position/save',
+      payload: { Visible: false, Update: true },
     });
   }
+  function confirm() {
+    Addform.validateFields()
+      .then((values) => {
+        const List: any = {};
+        for (let item in values) {
+          if (values[item]) {
+            List[item] = values[item];
+          }
+        }
+        state.dispatch({
+          type: 'position/UpDate',
+          payload: { params: List, id: AddParams.id ? AddParams.id : '' },
+        });
+      })
+      .catch((errorInfo) => {
+        console.log(errorInfo);
+      });
+  }
   const formItemLayout = {
-    labelCol: { span: 8 },
-    wrapperCol: { span: 10 },
+    labelCol: { span: 6 },
+    wrapperCol: { span: 16 },
   };
   return (
     <div>
@@ -165,52 +205,87 @@ function Position(state: any) {
               </Col>
               <Col md={12} xl={8} lg={8} sm={24}>
                 <Form.Item label="学历要求" name="education">
-                  <Select dropdownMatchSelectWidth={false}
-                    defaultActiveFirstOption={false}  
+                  <Select
+                    dropdownMatchSelectWidth={false}
+                    defaultActiveFirstOption={false}
                     filterOption={false}
-                  > 
-                  <Option value='100' key='100'>初中及以下</Option>
-                  <Option value='101' key='101'>中专</Option>
-                  <Option value='102' key='102'>高中</Option>
-                  <Option value='103' key='103'>大专</Option>
-                  <Option value='104' key='104'>本科</Option> 
-                  <Option value='105' key='105'>研究生</Option>
-                  <Option value='106' key='106'>博士</Option>
-                </Select>
-              </Form.Item>
+                  >
+                    <Option value="100" key="100">
+                      初中及以下
+                    </Option>
+                    <Option value="101" key="101">
+                      中专
+                    </Option>
+                    <Option value="102" key="102">
+                      高中
+                    </Option>
+                    <Option value="103" key="103">
+                      大专
+                    </Option>
+                    <Option value="104" key="104">
+                      本科
+                    </Option>
+                    <Option value="105" key="105">
+                      研究生
+                    </Option>
+                    <Option value="106" key="106">
+                      博士
+                    </Option>
+                    <Option value="107" key="107">
+                      其他
+                    </Option>
+                  </Select>
+                </Form.Item>
               </Col>
               <Col md={12} xl={8} lg={8} sm={24}>
-              <Form.Item label="专业" name="specialty">
-                <Select dropdownMatchSelectWidth={false}
-                  defaultActiveFirstOption={false}  
-                  filterOption={false}
-                > 
-                  { state.MajorList.map((item:any)=> <Option value={item.key} key={item.key} >{item.name}</Option>)} 
-                </Select> 
-              </Form.Item>
+                <Form.Item label="专业" name="specialty">
+                  <Select
+                    dropdownMatchSelectWidth={false}
+                    defaultActiveFirstOption={false}
+                    filterOption={false}
+                  >
+                    {state.MajorList.map((item: any) => (
+                      <Option value={item.key} key={item.key}>
+                        {item.name}
+                      </Option>
+                    ))}
+                  </Select>
+                </Form.Item>
               </Col>
-              <Col   span={24}>
+              <Col span={24}>
                 <Form.Item>
-                  <Button type="primary" onClick={()=>getList()}>
+                  <Button type="primary" onClick={() => getList()}>
                     查询
                   </Button>
-                  <Button style={{ margin: '0 8px' }} onClick={() => {
+                  <Button
+                    style={{ margin: '0 8px' }}
+                    onClick={() => {
                       form.resetFields();
                       var List = {
                         currentPage: 1,
-                        perPageRows:20
+                        perPageRows: 20,
                       };
-                      state.dispatch({ type: 'position/save', payload: { params: List }});
+                      state.dispatch({
+                        type: 'position/save',
+                        payload: { params: List },
+                      });
                     }}
                   >
                     重置
                   </Button>
-                  <Button style={{ margin: '0 8px' }} onClick={() => {
-                    state.dispatch({ type: 'position/cancel'})
-                    state.dispatch({ type: 'position/save', payload: { Visible: true,Update: true }})
-                    }}>新增
+                  <Button
+                    style={{ margin: '0 8px' }}
+                    onClick={() => {
+                      state.dispatch({ type: 'position/cancel' });
+                      state.dispatch({
+                        type: 'position/save',
+                        payload: { Visible: true, Update: true },
+                      });
+                    }}
+                  >
+                    新增
                   </Button>
-                </Form.Item> 
+                </Form.Item>
               </Col>
             </Row>
           </Form>
@@ -240,68 +315,115 @@ function Position(state: any) {
       </div>
       <Modal
         visible={state.Visible}
-        title={ state.AddParams.id ? "岗位编辑" : "岗位新增" }
+        title={state.AddParams.id ? '岗位编辑' : '岗位新增'}
         onOk={confirm}
         onCancel={cancel}
         width="500px"
         footer={[
-          <Button type="primary"  onClick={confirm}>保存</Button>,
-          <Button  onClick={cancel}>取消</Button>,
-        ]}>
-        <Form
-          form={Addform}
-          {...formItemLayout}
-          layout="horizontal"
-        >
+          <Button type="primary" onClick={confirm}>
+            保存
+          </Button>,
+          <Button onClick={cancel}>取消</Button>,
+        ]}
+      >
+        <Form form={Addform} {...formItemLayout} layout="horizontal">
           <Row>
             <Col span={24}>
-              <Form.Item label="岗位名称"  name="positionName" initialValue={AddParams.positionName}
-                rules={[{ required: true, message: '请输入岗位名称' }]}>
-                <Input/> 
-            </Form.Item>
-            </Col>
-            <Col span={24}>
-              <Form.Item label="薪资范围" name="pay" initialValue={AddParams.pay}
-                rules={[{ required: true, message: '请输入薪资范围' }]}>
+              <Form.Item
+                label="岗位名称"
+                name="positionName"
+                initialValue={AddParams.positionName}
+                rules={[{ required: true, message: '请输入岗位名称' }]}
+              >
                 <Input />
-              </Form.Item> 
+              </Form.Item>
             </Col>
             <Col span={24}>
-              <Form.Item label="学历要求" name="education" initialValue={AddParams.education}
-                rules={[{ required: true, message: '请选择学历' }]}>
-                <Select dropdownMatchSelectWidth={false}
-                  defaultActiveFirstOption={false}  
+              <Form.Item
+                label="薪资范围"
+                name="pay"
+                initialValue={AddParams.pay}
+                rules={[{ required: true, message: '请输入薪资范围' }]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col span={24}>
+              <Form.Item
+                label="学历要求"
+                name="education"
+                initialValue={AddParams.education}
+                rules={[{ required: true, message: '请选择学历' }]}
+              >
+                <Select
+                  dropdownMatchSelectWidth={false}
+                  defaultActiveFirstOption={false}
                   filterOption={false}
-                > 
-                  <Option value='100' key='100'>初中及以下</Option>
-                  <Option value='101' key='101'>中专</Option>
-                  <Option value='102' key='102'>高中</Option>
-                  <Option value='103' key='103'>大专</Option>
-                  <Option value='104' key='104'>本科</Option> 
-                  <Option value='105' key='105'>研究生</Option>
-                  <Option value='106' key='106'>博士</Option>
+                >
+                  <Option value="100" key="100">
+                    初中及以下
+                  </Option>
+                  <Option value="101" key="101">
+                    中专
+                  </Option>
+                  <Option value="102" key="102">
+                    高中
+                  </Option>
+                  <Option value="103" key="103">
+                    大专
+                  </Option>
+                  <Option value="104" key="104">
+                    本科
+                  </Option>
+                  <Option value="105" key="105">
+                    研究生
+                  </Option>
+                  <Option value="106" key="106">
+                    博士
+                  </Option>
+                  <Option value="107" key="107">
+                    其他
+                  </Option>
                 </Select>
               </Form.Item>
-            </Col> 
+            </Col>
             <Col span={24}>
-              <Form.Item label="专业" name="specialty" initialValue={AddParams.specialty}
-                rules={[{ required: true, message: '请输入您的专业' }]}>
-                <Select dropdownMatchSelectWidth={false}
-                  defaultActiveFirstOption={false}  
+              <Form.Item
+                label="专业"
+                name="specialty"
+                initialValue={AddParams.specialty}
+                rules={[{ required: true, message: '请输入您的专业' }]}
+              >
+                <Select
+                  dropdownMatchSelectWidth={false}
+                  defaultActiveFirstOption={false}
                   filterOption={false}
-                > 
-                  { state.MajorList.map((item:any)=> <Option value={item.key} key={item.key} >{item.name}</Option>)} 
-                </Select> 
+                >
+                  {state.MajorList.map((item: any) => (
+                    <Option value={item.key + ''} key={item.key}>
+                      {item.name}
+                    </Option>
+                  ))}
+                </Select>
               </Form.Item>
             </Col>
             <Col span={24}>
-              <Form.Item label="拟招聘人数" name="recruitNum" initialValue={AddParams.recruitNum}>
-                <Input/> 
+              <Form.Item
+                label="拟招聘人数"
+                name="recruitNum"
+                initialValue={AddParams.recruitNum}
+              >
+                <Input />
               </Form.Item>
             </Col>
             <Col span={24}>
-              <Form.Item  {...formItemLayout} label="任职要求" name="requirements" initialValue={AddParams.requirements}>
-                <TextArea />
+              <Form.Item
+                {...formItemLayout}
+                label="任职要求"
+                name="requirements"
+                initialValue={AddParams.requirements}
+              >
+                <TextArea autoSize />
               </Form.Item>
             </Col>
           </Row>

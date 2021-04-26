@@ -24,6 +24,7 @@
     "@ant-design/pro-layout": "^6.5.0",
     "@umijs/preset-react": "1.x",
     "antd": "^4.13.0",
+    "echarts": "^5.1.0",
     "es6-promise": "^4.2.8",
     "moment": "^2.29.1",
     "umi": "^3.3.9"
