@@ -34,6 +34,7 @@ export default {
       let state = yield select((state) => state.Statistics);
       const { data } = yield call(IndexServices.getList, { key: payload.key });
       if (data.status == 200) {
+        let name = '年龄情况统计图';
         data.data.map((item) => {
           if (payload.key == 'education') {
             state.educationList.map((item1) => {
@@ -41,6 +42,7 @@ export default {
                 item.type = item1.name;
               }
             });
+            name = '学历情况统计图';
           }
           if (payload.key == 'specialty') {
             state.MajorList.map((item1) => {
@@ -48,13 +50,10 @@ export default {
                 item.type = item1.name;
               }
             });
+            name = '专业情况统计图';
           }
         });
-        return data.data.sort(compare('const'));
-        // yield put({
-        //   type: 'save',
-        //   payload: { dataList: data.data.sort(compare('const')) },
-        // });
+        return { data: data.data.sort(compare('const')), name: name };
       }
     },
     *getMajor({ payload }, { select, call, put }) {

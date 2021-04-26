@@ -4,12 +4,13 @@ import * as echarts from 'echarts';
 const Option = Select.Option;
 function Statistics(state: any) {
   const [form] = Form.useForm();
-  function init(NameList: any, DataList: any) {
+  function init(NameList: any, DataList: any, name: string) {
     const chartDom: any = document.getElementById('main');
     const myChart = echarts.init(chartDom);
     myChart.setOption({
       title: {
-        text: '测试',
+        text: name,
+        left: 'center',
       },
       xAxis: {
         type: 'category',
@@ -27,32 +28,27 @@ function Statistics(state: any) {
     });
   }
   function getList() {
-    form
-      .validateFields()
-      .then((values) => {
-        const List: any = {};
-        for (let item in values) {
-          if (values[item]) {
-            List[item] = values[item];
-          }
+    form.validateFields().then((values) => {
+      const List: any = {};
+      for (let item in values) {
+        if (values[item]) {
+          List[item] = values[item];
         }
-        state
-          .dispatch({ type: 'Statistics/getList', payload: { key: List.key } })
-          .then((res: any) => {
-            const NameList: any[] = [];
-            const DataList: any[] = [];
-            res.map((item: any, index: number) => {
-              if (index < 10) {
-                NameList.push(item.type);
-                DataList.push(item.const);
-              }
-            });
-            init(NameList, DataList);
+      }
+      state
+        .dispatch({ type: 'Statistics/getList', payload: { key: List.key } })
+        .then((res: any) => {
+          const NameList: any[] = [];
+          const DataList: any[] = [];
+          res.data.map((item: any, index: number) => {
+            if (index < 10) {
+              NameList.push(item.type);
+              DataList.push(item.const);
+            }
           });
-      })
-      .catch((errorInfo) => {
-        console.log(errorInfo);
-      });
+          init(NameList, DataList, res.name);
+        });
+    });
   }
   return (
     <div className="contentPanel">
