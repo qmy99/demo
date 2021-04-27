@@ -1,18 +1,5 @@
 import { connect } from 'dva';
-import {
-  Table,
-  Pagination,
-  Form,
-  Row,
-  Col,
-  Input,
-  Button,
-  Select,
-  Modal,
-  Popconfirm,
-  message,
-  DatePicker,
-} from 'antd';
+import { Table, Pagination, Form, Row, Col, Input, Button, Select, Modal, Popconfirm, message, DatePicker } from 'antd';
 const { RangePicker } = DatePicker;
 const Option = Select.Option;
 
@@ -186,12 +173,7 @@ function Position(state: any) {
     <div>
       <div className="contentPanel">
         <div className="searchPanel">
-          <Form
-            form={form}
-            labelCol={{ span: 5 }}
-            wrapperCol={{ span: 17 }}
-            layout="horizontal"
-          >
+          <Form form={form} labelCol={{ span: 5 }} wrapperCol={{ span: 17 }} layout="horizontal">
             <Row>
               <Col md={12} xl={8} lg={8} sm={24}>
                 <Form.Item label="岗位名称" name="positionName">
@@ -205,11 +187,7 @@ function Position(state: any) {
               </Col>
               <Col md={12} xl={8} lg={8} sm={24}>
                 <Form.Item label="学历要求" name="education">
-                  <Select
-                    dropdownMatchSelectWidth={false}
-                    defaultActiveFirstOption={false}
-                    filterOption={false}
-                  >
+                  <Select dropdownMatchSelectWidth={false} defaultActiveFirstOption={false} filterOption={false}>
                     <Option value="100" key="100">
                       初中及以下
                     </Option>
@@ -239,11 +217,7 @@ function Position(state: any) {
               </Col>
               <Col md={12} xl={8} lg={8} sm={24}>
                 <Form.Item label="专业" name="specialty">
-                  <Select
-                    dropdownMatchSelectWidth={false}
-                    defaultActiveFirstOption={false}
-                    filterOption={false}
-                  >
+                  <Select dropdownMatchSelectWidth={false} defaultActiveFirstOption={false} filterOption={false}>
                     {state.MajorList.map((item: any) => (
                       <Option value={item.key} key={item.key}>
                         {item.name}
@@ -291,13 +265,7 @@ function Position(state: any) {
           </Form>
         </div>
         <div style={{ marginTop: 20 }}>
-          <Table
-            dataSource={state.DataList.data}
-            bordered
-            rowKey={(record) => record.id}
-            columns={columns}
-            pagination={false}
-          />
+          <Table dataSource={state.DataList.data} bordered rowKey={(record) => record.id} columns={columns} pagination={false} />
         </div>
         <div style={{ marginTop: 20 }}>
           <Pagination
@@ -329,37 +297,18 @@ function Position(state: any) {
         <Form form={Addform} {...formItemLayout} layout="horizontal">
           <Row>
             <Col span={24}>
-              <Form.Item
-                label="岗位名称"
-                name="positionName"
-                initialValue={AddParams.positionName}
-                rules={[{ required: true, message: '请输入岗位名称' }]}
-              >
+              <Form.Item label="岗位名称" name="positionName" initialValue={AddParams.positionName} rules={[{ required: true, message: '请输入岗位名称' }]}>
                 <Input />
               </Form.Item>
             </Col>
             <Col span={24}>
-              <Form.Item
-                label="薪资范围"
-                name="pay"
-                initialValue={AddParams.pay}
-                rules={[{ required: true, message: '请输入薪资范围' }]}
-              >
+              <Form.Item label="薪资范围" name="pay" initialValue={AddParams.pay} rules={[{ required: true, message: '请输入薪资范围' }]}>
                 <Input />
               </Form.Item>
             </Col>
             <Col span={24}>
-              <Form.Item
-                label="学历要求"
-                name="education"
-                initialValue={AddParams.education}
-                rules={[{ required: true, message: '请选择学历' }]}
-              >
-                <Select
-                  dropdownMatchSelectWidth={false}
-                  defaultActiveFirstOption={false}
-                  filterOption={false}
-                >
+              <Form.Item label="学历要求" name="education" initialValue={AddParams.education} rules={[{ required: true, message: '请选择学历' }]}>
+                <Select dropdownMatchSelectWidth={false} defaultActiveFirstOption={false} filterOption={false}>
                   <Option value="100" key="100">
                     初中及以下
                   </Option>
@@ -388,17 +337,8 @@ function Position(state: any) {
               </Form.Item>
             </Col>
             <Col span={24}>
-              <Form.Item
-                label="专业"
-                name="specialty"
-                initialValue={AddParams.specialty}
-                rules={[{ required: true, message: '请输入您的专业' }]}
-              >
-                <Select
-                  dropdownMatchSelectWidth={false}
-                  defaultActiveFirstOption={false}
-                  filterOption={false}
-                >
+              <Form.Item label="专业" name="specialty" initialValue={AddParams.specialty} rules={[{ required: true, message: '请输入您的专业' }]}>
+                <Select dropdownMatchSelectWidth={false} defaultActiveFirstOption={false} filterOption={false}>
                   {state.MajorList.map((item: any) => (
                     <Option value={item.key + ''} key={item.key}>
                       {item.name}
@@ -408,21 +348,12 @@ function Position(state: any) {
               </Form.Item>
             </Col>
             <Col span={24}>
-              <Form.Item
-                label="拟招聘人数"
-                name="recruitNum"
-                initialValue={AddParams.recruitNum}
-              >
+              <Form.Item label="拟招聘人数" name="recruitNum" initialValue={AddParams.recruitNum}>
                 <Input />
               </Form.Item>
             </Col>
             <Col span={24}>
-              <Form.Item
-                {...formItemLayout}
-                label="任职要求"
-                name="requirements"
-                initialValue={AddParams.requirements}
-              >
+              <Form.Item {...formItemLayout} label="任职要求" name="requirements" initialValue={AddParams.requirements}>
                 <TextArea autoSize />
               </Form.Item>
             </Col>

@@ -11,24 +11,36 @@ export default [
     icon: <SnippetsOutlined />,
     name: '人才管理',
     code: '001',
-    url: '/personnel'
+    url: '/personnel',
   },
   {
     icon: <SnippetsOutlined />,
     name: '职位管理',
     code: '002',
-    url: '/position'
+    url: '/position',
   },
   {
     icon: <SnippetsOutlined />,
     name: '统计管理',
     code: '003',
-    url: '/statistics'
+    url: '/statistics',
   },
   {
     icon: <SnippetsOutlined />,
     name: '系统管理',
     code: '004',
-    url: '/web-project/123'
+    url: '/system',
+    children: [
+      {
+        name: '菜单管理',
+        code: '005',
+        url: '/system/menu',
+      },
+      {
+        name: '用户管理',
+        code: '006',
+        url: '/system/user',
+      },
+    ],
   },
 ];
