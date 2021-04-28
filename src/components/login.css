@@ -4,43 +4,52 @@
   background-size: 42% 41%;
   background-position: 160px 170px;
 }
+
 .bg .center {
   width: 480px;
   margin: 0 auto;
 }
+
 .bg .center .header {
   background: none;
   margin-top: 50px;
   margin-left: 50px;
   padding: 0;
 }
+
 .bg .center .header img {
   width: 200px;
 }
+
 .bg .center .header p {
-  font-size: 25px;
-  margin-top: 2px;
+  font-size: 40px;
+  margin-top: 10px;
 }
+
 .bg .center .content {
   background: #ffffff;
   margin-top: 55px;
   margin-left: 300px;
 }
+
 .bg .center .content .left {
   padding: 30px 100px;
 }
+
 .bg .center .content .left h3 {
   font-size: 16px;
   color: #426791;
   margin-bottom: 25px;
   text-align: center;
 }
+
 .btn {
   background: #4c77a7;
   color: #ffffff;
   padding: 0 35px;
   margin-top: 10px;
 }
+
 .btn:hover,
 .btn:focus,
 .btn:active {
