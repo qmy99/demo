@@ -1,17 +1,5 @@
 import { connect } from 'dva';
-import {
-  Table,
-  Pagination,
-  Form,
-  Row,
-  Col,
-  Input,
-  Button,
-  Select,
-  Modal,
-  Popconfirm,
-  message,
-} from 'antd';
+import { Table, Pagination, Form, Row, Col, Input, Button, Select, Modal, Popconfirm, message } from 'antd';
 import moment from 'moment';
 import { DatePicker, Space } from 'antd';
 
@@ -51,15 +39,7 @@ function PersonnelPage(state: any) {
       key: 'workStatus',
       width: '100px',
       render: (text: any) => {
-        return text == 1
-          ? '离校'
-          : text == 2
-          ? '在校'
-          : text == 3
-          ? '在职'
-          : text == 4
-          ? '离职'
-          : '';
+        return text == 1 ? '离校' : text == 2 ? '在校' : text == 3 ? '在职' : text == 4 ? '离职' : '';
       },
     },
     {
@@ -307,12 +287,7 @@ function PersonnelPage(state: any) {
       <div className="contentPanel">
         {/* <div className="PageTitle">人才管理</div> */}
         <div className="searchPanel">
-          <Form
-            form={form}
-            labelCol={{ span: 5 }}
-            wrapperCol={{ span: 17 }}
-            layout="horizontal"
-          >
+          <Form form={form} labelCol={{ span: 5 }} wrapperCol={{ span: 17 }} layout="horizontal">
             <Row>
               <Col md={12} xl={8} lg={8} sm={24}>
                 <Form.Item label="姓名" name="name">
@@ -325,17 +300,8 @@ function PersonnelPage(state: any) {
                 </Form.Item>
               </Col>
               <Col md={12} xl={8} lg={8} sm={24}>
-                <Form.Item
-                  label="性别"
-                  name="sex"
-                  initialValue={state.params.sex}
-                >
-                  <Select
-                    dropdownMatchSelectWidth={false}
-                    defaultActiveFirstOption={false}
-                    filterOption={false}
-                    placeholder="请选择"
-                  >
+                <Form.Item label="性别" name="sex" initialValue={state.params.sex}>
+                  <Select dropdownMatchSelectWidth={false} defaultActiveFirstOption={false} filterOption={false} placeholder="请选择">
                     <Option value="-1" key="-1">
                       全部
                     </Option>
@@ -349,16 +315,8 @@ function PersonnelPage(state: any) {
                 </Form.Item>
               </Col>
               <Col md={12} xl={8} lg={8} sm={24}>
-                <Form.Item
-                  label="学历"
-                  name="education"
-                  initialValue={state.params.education}
-                >
-                  <Select
-                    dropdownMatchSelectWidth={false}
-                    defaultActiveFirstOption={false}
-                    filterOption={false}
-                  >
+                <Form.Item label="学历" name="education" initialValue={state.params.education}>
+                  <Select dropdownMatchSelectWidth={false} defaultActiveFirstOption={false} filterOption={false}>
                     <Option value="-1" key="99">
                       全部
                     </Option>
@@ -391,11 +349,7 @@ function PersonnelPage(state: any) {
               </Col>
               <Col md={12} xl={8} lg={8} sm={24}>
                 <Form.Item label="专业" name="specialty">
-                  <Select
-                    dropdownMatchSelectWidth={false}
-                    defaultActiveFirstOption={false}
-                    filterOption={false}
-                  >
+                  <Select dropdownMatchSelectWidth={false} defaultActiveFirstOption={false} filterOption={false}>
                     {state.MajorList.map((item: any) => (
                       <Option value={item.key} key={item.key}>
                         {item.name}
@@ -405,16 +359,8 @@ function PersonnelPage(state: any) {
                 </Form.Item>
               </Col>
               <Col md={12} xl={8} lg={8} sm={24}>
-                <Form.Item
-                  label="工作状态"
-                  name="workStatus"
-                  initialValue={state.params.workStatus}
-                >
-                  <Select
-                    dropdownMatchSelectWidth={false}
-                    defaultActiveFirstOption={false}
-                    filterOption={false}
-                  >
+                <Form.Item label="工作状态" name="workStatus" initialValue={state.params.workStatus}>
+                  <Select dropdownMatchSelectWidth={false} defaultActiveFirstOption={false} filterOption={false}>
                     <Option value="-1" key="99">
                       全部
                     </Option>
@@ -479,14 +425,7 @@ function PersonnelPage(state: any) {
           </Form>
         </div>
         <div style={{ marginTop: 20 }}>
-          <Table
-            scroll={{ x: 1500 }}
-            dataSource={state.DataList.data}
-            bordered
-            rowKey={(record) => record.id}
-            columns={columns}
-            pagination={false}
-          />
+          <Table scroll={{ x: 1500 }} dataSource={state.DataList.data} bordered rowKey={(record) => record.id} columns={columns} pagination={false} />
         </div>
         <div style={{ marginTop: 20 }}>
           <Pagination
@@ -515,40 +454,21 @@ function PersonnelPage(state: any) {
           <Button onClick={cancel}>取消</Button>,
         ]}
       >
-        <Form
-          form={Addform}
-          labelCol={{ span: 8 }}
-          wrapperCol={{ span: 16 }}
-          layout="horizontal"
-        >
+        <Form form={Addform} labelCol={{ span: 8 }} wrapperCol={{ span: 16 }} layout="horizontal">
           <Row>
             <Col md={12} xl={12} lg={12} sm={12}>
-              <Form.Item
-                label="姓名"
-                name="name"
-                initialValue={AddParams.name}
-                rules={[{ required: true, message: '请输入您的姓名' }]}
-              >
+              <Form.Item label="姓名" name="name" initialValue={AddParams.name} rules={[{ required: true, message: '请输入您的姓名' }]}>
                 <Input />
               </Form.Item>
             </Col>
             <Col md={12} xl={12} lg={12} sm={12}>
-              <Form.Item
-                label="年龄"
-                name="age"
-                initialValue={AddParams.age}
-                rules={[{ required: true, message: '请输入您的年龄' }]}
-              >
+              <Form.Item label="年龄" name="age" initialValue={AddParams.age} rules={[{ required: true, message: '请输入您的年龄' }]}>
                 <Input />
               </Form.Item>
             </Col>
             <Col md={12} xl={12} lg={12} sm={12}>
               <Form.Item label="性别" name="sex" initialValue={AddParams.sex}>
-                <Select
-                  dropdownMatchSelectWidth={false}
-                  defaultActiveFirstOption={false}
-                  filterOption={false}
-                >
+                <Select dropdownMatchSelectWidth={false} defaultActiveFirstOption={false} filterOption={false}>
                   <Option value="1" key={10}>
                     男
                   </Option>
@@ -559,16 +479,8 @@ function PersonnelPage(state: any) {
               </Form.Item>
             </Col>
             <Col md={12} xl={12} lg={12} sm={12}>
-              <Form.Item
-                label="工作状态"
-                name="workStatus"
-                initialValue={AddParams.workStatus}
-              >
-                <Select
-                  dropdownMatchSelectWidth={false}
-                  defaultActiveFirstOption={false}
-                  filterOption={false}
-                >
+              <Form.Item label="工作状态" name="workStatus" initialValue={AddParams.workStatus}>
+                <Select dropdownMatchSelectWidth={false} defaultActiveFirstOption={false} filterOption={false}>
                   <Option value="0" key="0">
                     离校
                   </Option>
@@ -585,26 +497,13 @@ function PersonnelPage(state: any) {
               </Form.Item>
             </Col>
             <Col md={12} xl={12} lg={12} sm={12}>
-              <Form.Item
-                label="毕业院校"
-                name="school"
-                initialValue={AddParams.school}
-              >
+              <Form.Item label="毕业院校" name="school" initialValue={AddParams.school}>
                 <Input />
               </Form.Item>
             </Col>
             <Col md={12} xl={12} lg={12} sm={12}>
-              <Form.Item
-                label="学历"
-                name="education"
-                initialValue={AddParams.education}
-                rules={[{ required: true, message: '请选择学历' }]}
-              >
-                <Select
-                  dropdownMatchSelectWidth={false}
-                  defaultActiveFirstOption={false}
-                  filterOption={false}
-                >
+              <Form.Item label="学历" name="education" initialValue={AddParams.education} rules={[{ required: true, message: '请选择学历' }]}>
+                <Select dropdownMatchSelectWidth={false} defaultActiveFirstOption={false} filterOption={false}>
                   <Option value="100" key="100">
                     初中及以下
                   </Option>
@@ -633,17 +532,8 @@ function PersonnelPage(state: any) {
               </Form.Item>
             </Col>
             <Col md={12} xl={12} lg={12} sm={12}>
-              <Form.Item
-                label="专业"
-                name="specialty"
-                initialValue={AddParams.specialty}
-                rules={[{ required: true, message: '请输入您的专业' }]}
-              >
-                <Select
-                  dropdownMatchSelectWidth={false}
-                  defaultActiveFirstOption={false}
-                  filterOption={false}
-                >
+              <Form.Item label="专业" name="specialty" initialValue={AddParams.specialty} rules={[{ required: true, message: '请输入您的专业' }]}>
+                <Select dropdownMatchSelectWidth={false} defaultActiveFirstOption={false} filterOption={false}>
                   {state.MajorList.map((item: any) => (
                     <Option value={item.key} key={item.key}>
                       {item.name}
@@ -653,42 +543,23 @@ function PersonnelPage(state: any) {
               </Form.Item>
             </Col>
             <Col md={12} xl={12} lg={12} sm={12}>
-              <Form.Item
-                label="邮箱"
-                name="Email"
-                initialValue={AddParams.Email}
-                rules={[{ required: true, message: '请输入您的邮箱' }]}
-              >
+              <Form.Item label="邮箱" name="Email" initialValue={AddParams.Email} rules={[{ required: true, message: '请输入您的邮箱' }]}>
                 <Input />
               </Form.Item>
             </Col>
             <Col md={12} xl={12} lg={12} sm={12}>
-              <Form.Item
-                label="联系方式"
-                name="phone"
-                initialValue={AddParams.phone}
-                rules={[{ required: true, message: '请输入您的手机号' }]}
-              >
+              <Form.Item label="联系方式" name="phone" initialValue={AddParams.phone} rules={[{ required: true, message: '请输入您的手机号' }]}>
                 <Input />
               </Form.Item>
             </Col>
             <Col md={12} xl={12} lg={12} sm={12}>
-              <Form.Item
-                label="附件"
-                name="cover"
-                initialValue={AddParams.cover}
-              >
+              <Form.Item label="附件" name="cover" initialValue={AddParams.cover}>
                 {/* <Input /> */}
                 已上传
               </Form.Item>
             </Col>
             <Col span={24}>
-              <Form.Item
-                {...formItemLayout}
-                label="个人评价"
-                name="selfEvaluation"
-                initialValue={AddParams.selfEvaluation}
-              >
+              <Form.Item {...formItemLayout} label="个人评价" name="selfEvaluation" initialValue={AddParams.selfEvaluation}>
                 <TextArea />
               </Form.Item>
             </Col>
@@ -709,19 +580,10 @@ function PersonnelPage(state: any) {
           <Button onClick={ShowCancel}>取消</Button>,
         ]}
       >
-        <Form
-          form={SendMessage}
-          labelCol={{ span: 8 }}
-          wrapperCol={{ span: 18 }}
-          layout="horizontal"
-        >
+        <Form form={SendMessage} labelCol={{ span: 8 }} wrapperCol={{ span: 18 }} layout="horizontal">
           <Row>
             <Col span={24}>
-              <Form.Item
-                label="时间"
-                name="time"
-                rules={[{ required: true, message: '请选择时间' }]}
-              >
+              <Form.Item label="时间" name="time" rules={[{ required: true, message: '请选择时间' }]}>
                 <DatePicker showTime disabledDate={disabledDate} />
               </Form.Item>
             </Col>

@@ -23,6 +23,15 @@ export default {
   },
 
   effects: {
+    *cancel({ payload }, { select, call, put }) {
+      const MenuParams = {
+        pid: 0,
+        name: '',
+        url: '',
+        id: '',
+      };
+      yield put({ type: 'save', payload: { MenuParams } });
+    },
     *getList({ payload }, { select, call, put }) {
       yield put({ type: 'LeftMenu/save', payload: { loading: true } });
       const { data } = yield call(IndexServices.getList);
@@ -38,9 +47,28 @@ export default {
       }
     },
     *SaveDate({ payload }, { select, call, put }) {
-      const { data } = yield call(IndexServices.menuAddUser, { params: payload.params });
+      delete payload.params.id;
+      if (payload.id) {
+        const { data } = yield call(IndexServices.update, { params: payload.params, id: payload.id });
+        if (data.status == 200) {
+          message.success('修改成功');
+          yield put({ type: 'getList' });
+          yield put({ type: 'save', payload: { Visible: false } });
+        }
+      } else {
+        const { data } = yield call(IndexServices.menuAddUser, { params: payload.params });
+        if (data.status == 200) {
+          message.success('新建成功');
+          yield put({ type: 'getList' });
+          yield put({ type: 'save', payload: { Visible: false } });
+        }
+      }
+    },
+    *delRow({ payload }, { select, call, put }) {
+      const { data } = yield call(IndexServices.delRow, { id: payload.id });
       if (data.status == 200) {
-        console.log(1);
+        message.success('删除成功');
+        yield put({ type: 'getList' });
       }
     },
   },
