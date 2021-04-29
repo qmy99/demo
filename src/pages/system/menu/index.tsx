@@ -5,12 +5,12 @@ function MenuPage(state: any) {
   const [Addform] = Form.useForm();
   const columns = [
     {
-      title: 'title',
+      title: '菜单名称',
       dataIndex: 'title',
       key: 'title',
     },
     {
-      title: 'url',
+      title: '菜单Url',
       dataIndex: 'url',
       key: 'url',
     },
@@ -58,6 +58,7 @@ function MenuPage(state: any) {
             List[item] = values[item];
           }
         }
+        List.pid ? List.pid : state.MenuParams.pid;
         state.dispatch({ type: 'MenuPage/SaveDate', payload: { params: List, id: state.MenuParams.id } });
       })
       .catch((errorInfo) => {
