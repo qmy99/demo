@@ -52,7 +52,10 @@ function MenuPage(state: any) {
   function confirm() {
     Addform.validateFields()
       .then((values) => {
-        const List: any = {};
+        console.log(values);
+        const List: any = {
+          pid: values.pid,
+        };
         for (let item in values) {
           if (values[item]) {
             List[item] = values[item];
