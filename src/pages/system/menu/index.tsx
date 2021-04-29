@@ -104,7 +104,7 @@ function MenuPage(state: any) {
         </div>
         <Modal
           visible={state.Visible}
-          title={state.MenuParams.id ? '岗位编辑' : '岗位新增'}
+          title={state.MenuParams.id ? '菜单编辑' : '菜单新增'}
           onOk={confirm}
           onCancel={cancel}
           width="500px"
