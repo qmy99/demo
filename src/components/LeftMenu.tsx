@@ -12,11 +12,11 @@ function LeftMenu({ collapsed, menuList, childrens }: any) {
         let childrenItems = leftMenuItem(item.children);
         return (
           <SubMenu
-            key={item.code}
+            key={item.key}
             title={
               <span>
                 {item.icon}
-                {item.name}
+                {item.title}
               </span>
             }
           >
@@ -25,9 +25,9 @@ function LeftMenu({ collapsed, menuList, childrens }: any) {
         );
       } else {
         return (
-          <Menu.Item key={item.code} onClick={() => history.push(item.url)}>
+          <Menu.Item key={item.key} onClick={() => history.push(item.url)}>
             {item.icon}
-            {item.name}
+            {item.title}
           </Menu.Item>
         );
       }
@@ -36,17 +36,9 @@ function LeftMenu({ collapsed, menuList, childrens }: any) {
 
   return (
     <div>
-      <div
-        className={styles.logo}
-        style={{ backgroundSize: collapsed ? '70px' : '200px' }}
-      ></div>
+      <div className={styles.logo} style={{ backgroundSize: collapsed ? '70px' : '200px' }}></div>
       <div className={styles.menu}>
-        <Menu
-          className="leftTree"
-          defaultSelectedKeys={['1']}
-          mode="inline"
-          theme="dark"
-        >
+        <Menu className="leftTree" defaultSelectedKeys={['1']} mode="inline" theme="dark">
           {leftMenuItem(menuList)}
         </Menu>
       </div>
