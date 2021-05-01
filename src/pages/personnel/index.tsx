@@ -176,11 +176,17 @@ function PersonnelPage(state: any) {
       },
     },
   ];
-  if (state.Update) {
+  if (state.UpdateParams) {
     form.setFieldsValue(params);
-    Addform.setFieldsValue(state.AddParams);
+    state.dispatch({ type: 'personnel/save', payload: { UpdateParams: false } });
+  }
+  if (state.Update) {
     SendMessage.setFieldsValue({ time: [] });
     state.dispatch({ type: 'personnel/save', payload: { Update: false } });
+  }
+  if (state.UpDateAdd) {
+    Addform.setFieldsValue(state.AddParams);
+    state.dispatch({ type: 'personnel/save', payload: { UpDateAdd: false } });
   }
   function onChanges(current: any, pageSize: any) {
     params.currentPage = current;
@@ -237,7 +243,7 @@ function PersonnelPage(state: any) {
     state.dispatch({ type: 'personnel/cancel' });
     state.dispatch({
       type: 'personnel/save',
-      payload: { Visible: false, Update: true },
+      payload: { Visible: false, UpDateAdd: true },
     });
   }
   function disabledDate(current: any) {
@@ -401,7 +407,7 @@ function PersonnelPage(state: any) {
                       });
                       state.dispatch({
                         type: 'personnel/save',
-                        payload: { Update: true },
+                        payload: { UpdateParams: true },
                       });
                     }}
                   >
@@ -413,7 +419,7 @@ function PersonnelPage(state: any) {
                       state.dispatch({ type: 'personnel/cancel' });
                       state.dispatch({
                         type: 'personnel/save',
-                        payload: { Visible: true, Update: true },
+                        payload: { Visible: true, UpDateAdd: true },
                       });
                     }}
                   >
